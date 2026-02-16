@@ -7,12 +7,12 @@ module "s3_website" {
     aws.us-east-1 = aws.us-east-1
   }
 
-  bucket_name         = var.bucket_name
-  subdomain           = "ilyas"  # Endre til ditt unike navn (f.eks. "glenn")
+  bucket_name = var.bucket_name
+  subdomain   = "ilyas" # Endre til ditt unike navn (f.eks. "glenn")
 
   tags = {
-    Name        = "My Website"
-    Environment = "Demo"
+    Name         = "My Website"
+    Environment  = "Demo"
     PipelineTest = "true"
   }
 }

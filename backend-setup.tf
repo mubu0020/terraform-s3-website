@@ -4,7 +4,7 @@
 data "aws_region" "current" {}
 
 resource "aws_s3_bucket" "terraform_state" {
-  bucket = "ilyas-terraform-state"  # Bytt til unikt navn
+  bucket = "ilyas-terraform-state" # Bytt til unikt navn
 
   tags = {
     Name        = "Terraform State"
@@ -21,7 +21,7 @@ resource "aws_s3_bucket_versioning" "terraform_state" {
 }
 
 resource "aws_dynamodb_table" "terraform_locks" {
-  name         = "ilyas-terraform-state-locks"  # Bytt til unikt navn
+  name         = "ilyas-terraform-state-locks" # Bytt til unikt navn
   billing_mode = "PAY_PER_REQUEST"
   hash_key     = "LockID"
 
@@ -36,7 +36,7 @@ resource "aws_dynamodb_table" "terraform_locks" {
 }
 
 output "backend_config" {
-  value = <<-EOT
+  value       = <<-EOT
     backend "s3" {
       bucket         = "${aws_s3_bucket.terraform_state.id}"
       key            = "website/terraform.tfstate"

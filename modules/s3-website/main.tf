@@ -1,6 +1,6 @@
 # Data source - henter informasjon om eksisterende hosted zone
 data "aws_route53_zone" "main" {
-  zone_id = "Z09151061LZNRB9E4BYEL"  # thecloudcollege.com
+  zone_id = "Z09151061LZNRB9E4BYEL" # thecloudcollege.com
 }
 # Data source - henter eksisterende wildcard ACM-sertifikat
 # Bruker us-east-1 provider fordi CloudFront krever sertifikat i denne regionen
@@ -59,7 +59,7 @@ resource "aws_s3_bucket_policy" "website" {
 resource "aws_cloudfront_distribution" "website" {
   enabled             = true
   default_root_object = "index.html"
-  aliases             = ["${var.subdomain}.thecloudcollege.com"]  # NYTT: Custom domain
+  aliases             = ["${var.subdomain}.thecloudcollege.com"] # NYTT: Custom domain
 
 
   origin {
@@ -88,7 +88,7 @@ resource "aws_cloudfront_distribution" "website" {
     }
 
     min_ttl     = 0
-    default_ttl = 0  # Instant refresh - ingen caching
+    default_ttl = 0 # Instant refresh - ingen caching
     max_ttl     = 0
   }
 
@@ -98,7 +98,7 @@ resource "aws_cloudfront_distribution" "website" {
     }
   }
 
-   viewer_certificate {
+  viewer_certificate {
     acm_certificate_arn      = data.aws_acm_certificate.wildcard.arn
     ssl_support_method       = "sni-only"
     minimum_protocol_version = "TLSv1.2_2021"
